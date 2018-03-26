@@ -13,8 +13,9 @@ app.use(cors())
 app.use(bod.json())
 
 if (process.env.NODE_ENV === 'production') {
-  console.info('serving client files from `build` directory')
-  app.use(exp.static(path.resolve('build')))
+  let _path = path.resolve('build')
+  console.info(`serving client files from '${_path}' directory`)
+  app.use(exp.static(_path))
 }
 
 app.get('/api/heartbeat', (req, res) => res.json({

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "NODE_ENV=production preact build",
-    "now-build": "NODE_ENV=production preact build",
+    "now-build": "NODE_ENV=production preact build --no-prerender",
     "now-start": "NODE_ENV=production node server.js",
     "serve": "preact build && preact serve",
     "dev": "preact watch",
@@ -31,6 +31,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "preact": "^8.2.1",
-    "preact-compat": "^3.17.0"
+    "preact-compat": "^3.17.0",
+    "react-router-dom": "^4.2.2",
+    "unistore": "^3.0.4"
   }
 }
