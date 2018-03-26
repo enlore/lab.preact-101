@@ -12,7 +12,8 @@ console.info(inventory.get())
 app.use(cors())
 app.use(bod.json())
 
-if (proces.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
+  console.info('serving client files from `build` directory')
   app.use(exp.static(path.resolve('build')))
 }
 

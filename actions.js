@@ -1,5 +1,12 @@
 import net from './net'
 
+console.info(process.env.NODE_ENV)
+
+let apiRoot = 'http://localhost:4000'
+
+if (process.env.NODE_ENV === 'production')
+    apiRoot = ''
+
 const actions = store => ({
   addChitsToUser: ({ user }, chits) => {
     // console.info(state, chits)
@@ -7,15 +14,15 @@ const actions = store => ({
   }
 
   , checkApi: ({ apiStatus }) =>
-      net.get('http://localhost:4000/api/heartbeat')
+      net.get(`${apiRoot}/api/heartbeat`)
         .then(({ data }) => console.info(data) || { apiStatus: data.message })
 
   , submitCounts: ({ inventory }) =>
-      net.get('http://localhost:4000/api/census', { body: inventory })
+      net.get(`${apiRoot}/api/census`, { body: inventory })
         .then(({ data }) => { inventory: data.inventory })
 
   , getInventory: (state) =>
-      net.get('http://localhost:4000/api/census')
+      net.get(`${apiRoot}/api/census`)
         .then(({ data }) => { inventory: data.inventory })
 
   , setEditingCount: (_, editingCount) => console.info('editing count', editingCount) || { editingCount }
