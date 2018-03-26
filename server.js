@@ -1,3 +1,4 @@
+const path = require('path')
 const cors = require('cors')
 
 const exp = require('express')
@@ -10,6 +11,10 @@ console.info(inventory.get())
 
 app.use(cors())
 app.use(bod.json())
+
+if (proces.env.NODE_ENV === 'production') {
+  app.use(exp.static(path.resolve('build')))
+}
 
 app.get('/api/heartbeat', (req, res) => res.json({
   status: 200,
