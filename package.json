@@ -5,10 +5,13 @@
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build",
+    "build": "NODE_ENV=production preact build",
+    "now-build": "NODE_ENV=production preact build",
+    "now-start": "NODE_ENV=production node server.js",
     "serve": "preact build && preact serve",
     "dev": "preact watch",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "deploy": "now"
   },
   "eslintConfig": {
     "extends": "eslint-config-synacor"
@@ -24,6 +27,9 @@
     "preact-cli": "^2.0.0"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0"
   }
